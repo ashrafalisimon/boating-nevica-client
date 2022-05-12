@@ -6,7 +6,7 @@ import { MenuAlt3Icon, PhoneIcon, XIcon } from '@heroicons/react/solid'
 const Header = () => {
     const [open, setOpen] = useState(false);
     return (
-        <nav className='bg-slate-900 px-2 sm:px-16 py-4'>
+        <nav className='bg-slate-900 px-2 sm:px-16 py-4 sticky'>
           <div className='flex items-center justify-between'>
             <div className='flex items-center justify-between'>
                   {/* nav logo  */}
