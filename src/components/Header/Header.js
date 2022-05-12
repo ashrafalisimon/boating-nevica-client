@@ -6,7 +6,7 @@ import { MenuAlt3Icon, PhoneIcon, XIcon } from '@heroicons/react/solid'
 const Header = () => {
     const [open, setOpen] = useState(false);
     return (
-        <nav className='bg-slate-900 px-2 sm:px-16 py-4 sticky'>
+        <nav className='bg-slate-900 px-2 sm:px-16 py-4 sticky top-0'>
           <div className='flex items-center justify-between'>
             <div className='flex items-center justify-between'>
                   {/* nav logo  */}
@@ -33,10 +33,11 @@ const Header = () => {
                          open? <XIcon className='h-7 w-7 md:hidden text-blue-500'/> :  <MenuAlt3Icon className='h-7 w-7 md:hidden text-blue-500'/>
                      }
                   </div>
-                  <ul className={`md:flex justify-end md:space-x-8 text-white font-bold ${open ? "mt-6 absolute block w-full left-0 bg-slate-900 py-2 text-center duration-500 ease-in " :"hidden"} `}>
+                  <ul className={`md:flex justify-end md:space-x-8 text-white font-bold ${open ? "mt-6 absolute block w-full left-0 bg-slate-900 py-2 px-2 duration-500 ease-in " :"hidden"} `}>
                       <li><Link className='hover:text-blue-500 duration-300' to='/home'>HOME</Link></li>
                       <li><Link className='hover:text-blue-500 duration-300' to='/about'>ABOUT</Link></li>
                       <li><Link className='hover:text-blue-500 duration-300' to='/boats' >BOATS BOOKING</Link></li>
+                      <li><Link className='hover:text-blue-500 duration-300' to='/blogs' >BLOGS</Link></li>
                       <li><Link className='hover:text-blue-500 duration-300' to='/contact' >CONTACT</Link></li>
                   </ul>
               </div>

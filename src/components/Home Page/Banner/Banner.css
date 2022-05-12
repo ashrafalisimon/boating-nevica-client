@@ -1,0 +1,10 @@
+.explore-btn ::after{
+    border-style: solid;
+	padding-top: 5px;
+	border-color: transparent transparent rgb(251 191 36) transparent;
+	border-width: 0 0px 10px 185px;
+	content: '';
+	display:block;
+	height: 0;
+	width: 0;
+  }
