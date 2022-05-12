@@ -16,7 +16,7 @@ const BoatsService = () => {
                 </div>
             </div>
 
-            <div className='md:-mt-12 sm:px-20 px-2 grid md:gap-8 grid-cols-1 mt- md:grid-cols-3 md:mb-8'>
+            <div className='md:-mt-20 sm:px-20 px-2 grid md:gap-8 grid-cols-1 mt- md:grid-cols-3 md:mb-8'>
                 {
                     boatServices.slice(0,6).map(service => <BoatsServiceDetails
                         key={service._id}
