@@ -1,4 +1,6 @@
+import {  ArrowRightIcon } from '@heroicons/react/solid';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import useBoatsService from '../../../hooks/useBoatsService';
 import background from '../../../images/bg-1.jpg';
 import dcore from "../../../images/decore-image-min.png"
@@ -24,6 +26,12 @@ const BoatsService = () => {
                     />)
                 }
             </div>
+           <div className='text-center my-2 md:my-4'>
+            <button className="border-gray-800 border-2 hover:border-amber-400
+                hover:bg-amber-400 hover:text-white text-gray-800 font-bold  py-4  duration-500 px-12 border-solid">
+                    <Link className='flex items-center space-x-1' to="/boats"><span>See More</span><ArrowRightIcon className='h-5 w-5'/></Link>
+                </button>
+           </div>
 
         </div>
     );

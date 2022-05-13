@@ -38,7 +38,7 @@ const BoatsServiceDetails = ({service}) => {
                         <span className='font-medium'>{other}</span>
                     </div>
                 </div>
-                <button className="bg-blue-400 hover:bg-amber-400 text-gray-800 font-bold w-full  py-4 justify-center duration-500 px-4 rounded inline-flex items-center">
+                <button className="bg-blue-400 hover:bg-amber-400 text-white hover:text-gray-800 font-bold w-full  py-4 justify-center duration-500 px-4 rounded inline-flex items-center">
                    <Link to="/boats">BOOKING NOW </Link>
                 </button>
             </div>

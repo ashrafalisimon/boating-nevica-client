@@ -8,3 +8,8 @@
 	height: 0;
 	width: 0;
   }
+  @media (max-width: 640px) { 
+	.explore-btn ::after{
+		display:none;
+	  }
+   }
