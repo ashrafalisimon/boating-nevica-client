@@ -35,10 +35,10 @@ const Header = () => {
                   </div>
                   <ul className={`md:flex justify-end md:space-x-8 text-white font-bold ${open ? "mt-6 absolute block w-full left-0 bg-slate-900 py-2 px-2 duration-500 ease-in " :"hidden"} `}>
                       <li><Link className='hover:text-blue-500 duration-300' to='/home'>HOME</Link></li>
-                      <li><Link className='hover:text-blue-500 duration-300' to='/about'>ABOUT</Link></li>
                       <li><Link className='hover:text-blue-500 duration-300' to='/boats' >BOATS BOOKING</Link></li>
                       <li><Link className='hover:text-blue-500 duration-300' to='/blogs' >BLOGS</Link></li>
                       <li><Link className='hover:text-blue-500 duration-300' to='/contact' >CONTACT</Link></li>
+                      <li><Link className='hover:text-blue-500 duration-300' to='/login'>LOGIN</Link></li>
                   </ul>
               </div>
           </div>

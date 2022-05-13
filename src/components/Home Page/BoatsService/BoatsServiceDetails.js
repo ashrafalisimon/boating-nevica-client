@@ -1,9 +1,13 @@
 import React from 'react';
 import { ArrowLeftIcon, ArrowRightIcon, CollectionIcon, UserCircleIcon, UserGroupIcon, ViewListIcon } from '@heroicons/react/solid'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const BoatsServiceDetails = ({service}) => {
-    const {name, price, feet ,other,bedroom, guests, description,img, packageName, servicerName, shortDescription  } =service;
+    const { _id, name, price, feet ,other,bedroom, guests, description,img, packageName, servicerName, shortDescription  } =service;
+    const navigate = useNavigate()
+    const boatSerivceDetails = id =>{
+        navigate(`/boatService/${id}`);
+    }
        return( 
         <div className='max-w-sm py-2 rounded-lg overflow-hidden shadow-md'>
             <img className="w-full rounded-lg" src={img} alt=""></img>
@@ -38,7 +42,7 @@ const BoatsServiceDetails = ({service}) => {
                         <span className='font-medium'>{other}</span>
                     </div>
                 </div>
-                <button className="bg-blue-400 hover:bg-amber-400 text-white hover:text-gray-800 font-bold w-full  py-4 justify-center duration-500 px-4 rounded inline-flex items-center">
+                <button onClick={()=>boatSerivceDetails(_id) } className="bg-blue-400 hover:bg-amber-400 text-white hover:text-gray-800 font-bold w-full  py-4 justify-center duration-500 px-4 rounded inline-flex items-center">
                    <Link to="/boats">BOOKING NOW </Link>
                 </button>
             </div>
