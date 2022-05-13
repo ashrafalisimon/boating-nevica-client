@@ -5,6 +5,7 @@ import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Login from './components/LoginRegister/Login';
+import Register from './components/LoginRegister/Register';
 import NotFound from './components/NotFound/NotFound';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path='/home' element={<Home/>}/>
           <Route path='/boatService/:serviceId' element={<BoatServiceDetails/>}></Route>
           <Route path='/login' element={<Login/>}></Route>
+          <Route path='/register' element={<Register/>}></Route>
           <Route path='*' element={<NotFound/>}></Route>
        </Routes> 
 
