@@ -1,13 +1,38 @@
 import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import auth from "../../firebase.init";
+import Loading from "../RequirAuth/Loading";
 const Login = () => {
     const emailRef = useRef('');
     const passRef = useRef('');
+    const navigate = useNavigate();
+    const location =useLocation();
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+      ] = useSignInWithEmailAndPassword(auth);
+      const [signInWithGoogle, user1, loading1, error1] = useSignInWithGoogle(auth);
+      let from = location.state?.from?.pathname || "/";
+      let errorElement;
+
+
+    if(user || user1){
+        navigate(from, { replace: true });
+    } 
+    if(loading || loading1){
+        return <Loading/>
+    }
+    if (error || error1) {
+        errorElement = <p className='text-danger'>Error: {error?.message}</p>
+    }
     const handleLoginForm = event =>{
         event.preventDefault();
         const email = emailRef.current.value;
         const pass = passRef.current.value;
-        console.log(email, pass);
+        signInWithEmailAndPassword(email, pass);
     }
   return (
     <div className="px-4 md:w-8/12 lg:w-5/12 mx-auto">
@@ -47,6 +72,7 @@ const Login = () => {
         >
           Login
         </button>
+        {errorElement}
       </form>
 
       <div className=" py-4 flex flex-col space-y-3">
@@ -64,6 +90,7 @@ const Login = () => {
         <button
           className="inline-block px-7 py-2 border-2 border-slate-600 text-xl font-extrabold text-slate-600 font-medium text-sm leading-snug rounded shadow-md hover:shadow-lg  transition duration-150 ease-in-out w-full"
           type="submit"
+          onClick={()=>signInWithGoogle()}
         >
           Google Sing In
         </button>
