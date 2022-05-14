@@ -5,10 +5,24 @@ import { ArrowRightIcon, CollectionIcon, UserCircleIcon, UserGroupIcon, ViewList
 import { Link, useNavigate } from "react-router-dom";
 
 const BoatsBooking = () => {
-    const [boatServices] = useBoatsService();
+    const [boatServices,setBoatServices] = useBoatsService();
     const navigate = useNavigate()
     const boatSerivceDetails = id =>{
         navigate(`/boatService/${id}`);
+    }
+    const handleDelete = id=>{
+        const proceed = window.confirm("Are You Sure?")
+        if(proceed){
+            const url= `http://localhost:5000/service/${id}`;
+            fetch(url,{
+                method:'DELETE'
+            })
+            .then(res=> res.json())
+            .then(data =>{
+                const remaining = boatServices.filter(bookService=> bookService._id !== id)
+                setBoatServices(remaining);
+            })
+        }
     }
   return (
    
@@ -67,7 +81,9 @@ const BoatsBooking = () => {
                 <button onClick={()=>boatSerivceDetails(service._id) } className="bg-blue-400 hover:bg-amber-400 text-white hover:text-gray-800 font-bold w-full  py-4 justify-center duration-500 px-4 rounded inline-flex items-center">
                    BOOKING NOW
                 </button>
-                <button className="bg-amber-400 hover:bg-blue-400 hover:text-white text-gray-800 font-bold w-full  py-4 justify-center duration-500 px-4 rounded inline-flex items-center">
+                <button 
+                onClick={()=>handleDelete(service._id)}
+                className="bg-amber-400 hover:bg-blue-400 hover:text-white text-gray-800 font-bold w-full  py-4 justify-center duration-500 px-4 rounded inline-flex items-center">
                    DELETE NOW
                 </button>
             </div>

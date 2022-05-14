@@ -58,14 +58,26 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link className="hover:text-blue-500 duration-300" to="/boats">
-                BOATS BOOKING
-              </Link>
-            </li>
-            <li>
               <Link className="hover:text-blue-500 duration-300" to="/blogs">
                 BLOGS
               </Link>
+            </li>
+            <li>
+              {
+                user && <>
+                    <Link className="hover:text-blue-500 duration-300" to="/boats">
+                BOATS MANAGES
+              </Link>
+                </>
+              }
+            </li>
+            <li>
+            {
+                user && <>
+                  <Link className="hover:text-blue-500 duration-300" to="/addService">
+                    ADD BOOKED</Link>
+                </>
+              }
             </li>
             <li>
               <Link className="hover:text-blue-500 duration-300" to="/contact">
