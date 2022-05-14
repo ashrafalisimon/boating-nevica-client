@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeftIcon, ArrowRightIcon, CollectionIcon, UserCircleIcon, UserGroupIcon, ViewListIcon } from '@heroicons/react/solid'
+import {  ArrowRightIcon, CollectionIcon, UserCircleIcon, UserGroupIcon, ViewListIcon } from '@heroicons/react/solid'
 import { Link, useNavigate } from 'react-router-dom';
 
 const BoatsServiceDetails = ({service}) => {

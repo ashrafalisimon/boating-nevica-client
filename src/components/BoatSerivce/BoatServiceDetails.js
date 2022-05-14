@@ -1,6 +1,6 @@
 import { ArrowRightIcon, CollectionIcon, UserCircleIcon, UserGroupIcon, ViewListIcon } from "@heroicons/react/solid";
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const BoatServiceDetails = () => {
   const { serviceId } = useParams();
