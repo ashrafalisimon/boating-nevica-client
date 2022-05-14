@@ -8,7 +8,7 @@ const BoatServiceDetails = () => {
   const [booking, setBooking] = useState({});
   const { register, handleSubmit } = useForm();
   useEffect(() => {
-    const url = `http://localhost:5000/service/${serviceId}`;
+    const url = `https://rocky-hollows-98162.herokuapp.com/service/${serviceId}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setBooking(data));
@@ -17,7 +17,7 @@ const BoatServiceDetails = () => {
   const onSubmit = data =>{
     
     // send data to the server
-    const url = `http://localhost:5000/service/${serviceId}`;
+    const url = `https://rocky-hollows-98162.herokuapp.com/service/${serviceId}`;
     fetch(url, {
         method: 'PUT',
         headers: {
@@ -29,7 +29,8 @@ const BoatServiceDetails = () => {
     .then(data =>{
         console.log('success', data);
         alert('users added successfully!!!');
-    })
+        })
+   
 }
   return (
     <div className="w-5/6 mx-auto px-20 py-2  rounded-lg overflow-hidden">

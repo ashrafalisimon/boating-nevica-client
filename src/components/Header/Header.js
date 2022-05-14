@@ -80,9 +80,12 @@ const Header = () => {
               }
             </li>
             <li>
-              <Link className="hover:text-blue-500 duration-300" to="/contact">
-                CONTACT
-              </Link>
+            {
+                user && <>
+                  <Link className="hover:text-blue-500 duration-300" to="/myItem">
+                    MY ITEM</Link>
+                </>
+              }
             </li>
             <li>
               {

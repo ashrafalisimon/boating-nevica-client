@@ -1,11 +1,15 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import auth from "../../firebase.init";
 
 const AddService = () => {
+  const [user]= useAuthState(auth);
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
+
     console.log(data);
-    const url = `http://localhost:5000/service`;
+    const url = `https://rocky-hollows-98162.herokuapp.com/service`;
     fetch(url,{
         method:"POST",
         headers:{
@@ -25,6 +29,15 @@ const AddService = () => {
       </h2>
 
       <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="mb-6" >
+          <input 
+          placeholder="Email"
+          type="email"
+          value={user.email}
+           className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+            {...register("email")}
+          />
+        </div>
         <div className="mb-6" >
           <input 
           placeholder="Booking Name"

@@ -1,6 +1,14 @@
-# Getting Started with Create React App
+# Boating Nevica
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Providing a large fleet of Boats for a perfect and dreamy experience
+
+Boating Nevice Client Site [Client Site Link](https://boating-nevica.web.app/).
+
+* Inventories Website
+* Detailed information of the Inventories is given.
+* If you want to add Service him, you have to go to the Add Service page.
+* You can add or delete any item if you want. (But you must have an account)
+* Technologies use (react, talwind css, heroicons, firebase, nodejs etc.
 
 ## Available Scripts
 

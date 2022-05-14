@@ -1,15 +1,21 @@
-import React from "react";
-import dcore from "../../images/decore-image-min.png";
-import useBoatsService from "../../hooks/useBoatsService";
-import { ArrowRightIcon, CollectionIcon, UserCircleIcon, UserGroupIcon, ViewListIcon } from "@heroicons/react/solid";
-import { Link, useNavigate } from "react-router-dom";
+import { ArrowRightIcon, CollectionIcon, UserCircleIcon, UserGroupIcon, ViewListIcon } from '@heroicons/react/solid';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
-const BoatsBooking = () => {
-    const [boatServices,setBoatServices] = useBoatsService();
-    const navigate = useNavigate()
-    const boatSerivceDetails = id =>{
-        navigate(`/boatService/${id}`);
-    }
+const MyItem = () => {
+    const [user]= useAuthState(auth);
+    const [item, setItem] =useState([]);
+    useEffect(()=>{
+        const getItem = async()=>{
+            const email = user.email;
+            const url =`https://rocky-hollows-98162.herokuapp.com/service?emaail=${email}`;
+            const {data}=await axios.get(url)
+            setItem(data);
+        }
+        getItem()
+    },[user])
     const handleDelete = id=>{
         const proceed = window.confirm("Are You Sure?")
         if(proceed){
@@ -19,32 +25,16 @@ const BoatsBooking = () => {
             })
             .then(res=> res.json())
             .then(data =>{
-                const remaining = boatServices.filter(bookService=> bookService._id !== id)
-                setBoatServices(remaining);
+                const remaining = item.filter(bookService=> bookService._id !== id)
+                setItem(remaining);
             })
         }
     }
-  return (
-   
-    <div>
-      <div
-        className="py-4 sm:py-24 sm:px-20 px-2  space-y-1 md:space-y-4"
-      >
-        <div className="text-center md:w-3/4 mx-auto md:space-y-5">
-          <h4 className="text-xl text-slate-900 md:text-4xl  font-semibold tracking-wider ">
-            All Luxury Boats
-          </h4>
-          <p className="text-slate-600 md:w-2/3 mx-auto">
-            Every yacht enthusiast expects more from yacht rental company.
-            Rental sitehas to be pleasant to the eye and fully enabled for many
-            testimonial features.
-          </p>
-          <img className="mx-auto" src={dcore} alt="" />
-        </div>
-      </div>
-      <div className='md:-mt-20 sm:px-20 px-2 grid md:gap-8 grid-cols-1 mt- md:grid-cols-3 md:mb-8'>
+    return (
+        <div>
+      <div className='md:mt-20 sm:px-20 px-2 grid md:gap-8 grid-cols-1 mt- md:grid-cols-3 md:mb-8'>
                 {
-                    boatServices.map(service => 
+                    item.map(service => 
                         <div key={service._id} className='max-w-sm py-2 rounded-lg overflow-hidden shadow-md'>
             <img className="w-full rounded-lg" src={service.img} alt=""></img>
             <div className="px-6 py-4 border-b border-slate-200">
@@ -78,9 +68,6 @@ const BoatsBooking = () => {
                         <span className='font-medium'>{service.other}</span>
                     </div>
                 </div>
-                <button onClick={()=>boatSerivceDetails(service._id) } className="bg-blue-400 hover:bg-amber-400 text-white hover:text-gray-800 font-bold w-full  py-4 justify-center duration-500 px-4 rounded inline-flex items-center">
-                   BOOKING NOW
-                </button>
                 <button 
                 onClick={()=>handleDelete(service._id)}
                 className="bg-amber-400 hover:bg-blue-400 hover:text-white text-gray-800 font-bold w-full  py-4 justify-center duration-500 px-4 rounded inline-flex items-center">
@@ -92,13 +79,8 @@ const BoatsBooking = () => {
                 }
             </div>
 
-            <div className="w-48 mx-auto md:py-12">
-            <button className="hover:border-blue-400 border-slate-800 border-2  hover:text-blue-400 text-slate-800 font-bold w-full  py-4 justify-center duration-500 px-4 rounded inline-flex items-center">
-                   <Link to="/addService">Add New Item</Link>
-                </button>
-            </div>
     </div>
-  );
+    );
 };
 
-export default BoatsBooking;
+export default MyItem;

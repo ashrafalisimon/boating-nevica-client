@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useRef } from "react";
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
@@ -31,11 +32,15 @@ const Login = () => {
     const handleReset= ()=>{
       alert('Password Reset successfully!!!');
     }
-    const handleLoginForm = event =>{
+    const handleLoginForm =   event =>{
         event.preventDefault();
         const email = emailRef.current.value;
         const pass = passRef.current.value;
-        signInWithEmailAndPassword(email, pass);
+         signInWithEmailAndPassword(email, pass);
+        // const {data} = await axios.post('https://rocky-hollows-98162.herokuapp.com/login', {email});
+        // localStorage.setItem("accessToken", data.accessToken);
+        // navigate(from, { replace: true })
+
     }
   return (
     <div className="px-4 md:w-8/12 lg:w-5/12 mx-auto">
