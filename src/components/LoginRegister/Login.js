@@ -28,6 +28,9 @@ const Login = () => {
     if (error || error1) {
         errorElement = <p className='text-danger'>Error: {error?.message}</p>
     }
+    const handleReset= ()=>{
+      alert('Password Reset successfully!!!');
+    }
     const handleLoginForm = event =>{
         event.preventDefault();
         const email = emailRef.current.value;
@@ -56,16 +59,6 @@ const Login = () => {
             required
           />
         </div>
-
-        <div className="flex justify-between items-center mb-6">
-          <Link
-            to="#!"
-            className="text-blue-600 font-semibold text-sm hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out"
-          >
-            Forgot password?
-          </Link>
-        </div>
-
         <button
           type="submit"
           className="inline-block px-7 py-2 bg-blue-400 text-xl font-extrabold text-slate-800 font-medium text-sm leading-snug  rounded shadow-md hover:bg-amber-400 hover:shadow-lg  transition duration-150 ease-in-out w-full"
@@ -81,7 +74,7 @@ const Login = () => {
         </span>
         <span className="text-sm font-semibold">
           Forget Password?{" "}
-          <button className="btn btn-link text-dark pe-auto text-decoration-none">
+          <button onClick={()=>handleReset()} className="btn btn-link text-dark pe-auto text-decoration-none">
             Reset Password
           </button>
         </span>

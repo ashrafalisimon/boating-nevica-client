@@ -1,16 +1,36 @@
 import { ArrowRightIcon, CollectionIcon, UserCircleIcon, UserGroupIcon, ViewListIcon } from "@heroicons/react/solid";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 
 const BoatServiceDetails = () => {
   const { serviceId } = useParams();
   const [booking, setBooking] = useState({});
+  const { register, handleSubmit } = useForm();
   useEffect(() => {
     const url = `http://localhost:5000/service/${serviceId}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setBooking(data));
   }, []);
+
+  const onSubmit = data =>{
+    
+    // send data to the server
+    const url = `http://localhost:5000/service/${serviceId}`;
+    fetch(url, {
+        method: 'PUT',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(data =>{
+        console.log('success', data);
+        alert('users added successfully!!!');
+    })
+}
   return (
     <div className="w-5/6 mx-auto px-20 py-2  rounded-lg overflow-hidden">
       <img className="w-full rounded-lg" src={booking.img} alt=""></img>
@@ -63,10 +83,11 @@ const BoatServiceDetails = () => {
         </button>
       </div>
        <div className="px-6 pt-4 pb-2">
-      <form className="space-y-4" >
+      <form onSubmit={handleSubmit(onSubmit)}  className="space-y-4" >
            <input className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             required
-             type="number" />
+            {...register("guests")}
+             type="text" />
              
            <button
           className="bg-amber-400 hover:bg-blue-400 text-white hover:text-gray-800 font-bold w-full  py-4 justify-center duration-500 px-4 rounded inline-flex items-center"
