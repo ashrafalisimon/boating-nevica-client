@@ -5,6 +5,8 @@
 Boating Nevice Client Site [Client Site Link](https://boating-nevica.web.app/).
 
 * Inventories Website
+* Firebase Authentication implemented for email/password & Google.
+* If the user is logged in, he will be able to manage items, add new items.
 * Detailed information of the Inventories is given.
 * If you want to add Service him, you have to go to the Add Service page.
 * You can add or delete any item if you want. (But you must have an account)
